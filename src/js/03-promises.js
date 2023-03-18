@@ -24,25 +24,24 @@ formEl.addEventListener("submit", (event) => {
   let step = Number(event.target.elements.step.value);
   let amount = event.target.elements.amount.value;
 
-  
-  
+
     for (let i = 0; i < amount; i += 1) {
       position += 1;
       
       createPromise(position, delay)
         .then(({ position, delay }) => {
           Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`,{
-    timeout: 8000,
+    timeout: 4000,
   });
         })
         .catch(({ position, delay }) => {
-          Notiflix.Notify.warning(`❌ Rejected promise ${position} in ${delay}ms`,{
-    timeout: 8000,
+          Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`,{
+    timeout: 4000,
   });
         })
       delay += step;
     }
-
+  position = 0;
 }
 );
 
