@@ -22,7 +22,7 @@ flatpickr(
         selectDate = selectedDates[0];
         console.log(selectDate);
       }
-    },
+    }
   })
 );
 

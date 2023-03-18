@@ -11,7 +11,7 @@ startEl.addEventListener('click', addStylesBody);
 
 
 function addStylesBody() {
-  timerId = setInterval(() => {
+  const timerId = setInterval(() => {
     bodyEl.style.backgroundColor = getRandomHexColor();
   }, 1000);
   if (timerId) {
