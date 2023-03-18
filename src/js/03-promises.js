@@ -14,7 +14,6 @@ console.log(formEl);
 
 let position = 0;
 
-
 formEl.addEventListener("submit", (event) => {
   event.preventDefault()
  
@@ -22,21 +21,19 @@ formEl.addEventListener("submit", (event) => {
   let step = Number(event.target.elements.step.value);
   let amount = event.target.elements.amount.value;
 
-  
-  setInterval(() => {
-
+  for (let i = 0; i <= amount; i += 1) {
     position += 1;
-    delay += step
-    
-  
-    createPromise(position, delay)
+    delay += step;
+
+   createPromise(position, delay)
     .then(({ position, delay }) => {
       console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
     })
     .catch(({ position, delay }) => {
       console.log(`❌ Rejected promise ${position} in ${delay}ms`);
-    })
-  },delay)
-}) 
+    }) 
+}
+  }
+) 
 
 
