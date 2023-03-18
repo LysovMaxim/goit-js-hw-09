@@ -17,11 +17,11 @@ flatpickr(
       if (selectedDates[0] <= new Date()) {
         window.alert('Please choose a date in the future');
         startEl.disabled = true;
-          selectDate = null;
+          celectDate = null;
       } else {
         startEl.disabled = false;
-        selectDate = selectedDates[0];
-        console.log(selectDate);
+        celectDate = selectedDates[0];
+        console.log(celectDate);
       }
     }
   })
