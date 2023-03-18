@@ -14,11 +14,13 @@ function addStylesBody() {
     bodyEl.style.backgroundColor = getRandomHexColor();
   }, 1000);
   if (timerId) {
-    startEl.removeEventListener('click', addStylesBody);
+     startEl.disabled = true;
+    // startEl.removeEventListener('click', addStylesBody);
   }
 }
 
 stopEl.addEventListener('click', () => {
   clearInterval(timerId);
-  startEl.addEventListener('click', addStylesBody);
+  // startEl.addEventListener('click', addStylesBody);
+ startEl.disabled = false;
 });
