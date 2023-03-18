@@ -5,9 +5,10 @@ const datetimeEl = document.querySelector('#datetime-picker');
 console.log(datetimeEl);
 const startEl = document.querySelector('button[data-start]');
 console.log(startEl);
+
 flatpickr(
   datetimeEl,
-  (options = {
+   options = {
     enableTime: true,
     time_24hr: true,
     defaultDate: new Date(),
@@ -24,5 +25,5 @@ flatpickr(
       }
     }
   })
-);
+
 
