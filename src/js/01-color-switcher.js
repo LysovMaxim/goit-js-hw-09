@@ -14,7 +14,7 @@ function addStylesBody() {
     bodyEl.style.backgroundColor = getRandomHexColor();
   }, 1000);
   if (timerId) {
-    //  startEl.disabled = true;
+     startEl.disabled = true;
     startEl.removeEventListener('click', addStylesBody);
   }
 }
@@ -22,5 +22,5 @@ function addStylesBody() {
 stopEl.addEventListener('click', () => {
   clearInterval(timerId);
   startEl.addEventListener('click', addStylesBody);
-  //  startEl.disabled = false;
+   startEl.disabled = false;
 });
