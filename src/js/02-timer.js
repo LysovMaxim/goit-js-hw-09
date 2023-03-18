@@ -13,15 +13,18 @@ flatpickr(
     time_24hr: true,
     defaultDate: new Date(),
     minuteIncrement: 1,
-    onClose(selectedDates) {
+     onClose(selectedDates) {
+      
+       let selectDate = null
+       
       if (selectedDates[0] <= new Date()) {
         window.alert('Please choose a date in the future');
         startEl.disabled = true;
-          celectDate = null;
+          selectDate = null;
       } else {
         startEl.disabled = false;
-        celectDate = selectedDates[0];
-        console.log(celectDate);
+        selectDate = selectedDates[0];
+        console.log(selectDate);
       }
     }
   })
