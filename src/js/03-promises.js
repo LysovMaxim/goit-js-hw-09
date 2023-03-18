@@ -14,6 +14,7 @@ console.log(formEl);
 
 let position = 0;
 
+
 formEl.addEventListener("submit", (event) => {
   event.preventDefault()
  
