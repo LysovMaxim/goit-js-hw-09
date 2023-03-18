@@ -9,6 +9,7 @@ function getRandomHexColor() {
 
 startEl.addEventListener('click', addStylesBody);
 
+
 function addStylesBody() {
   timerId = setInterval(() => {
     bodyEl.style.backgroundColor = getRandomHexColor();

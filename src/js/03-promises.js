@@ -22,6 +22,7 @@ formEl.addEventListener("submit", (event) => {
   let step = Number(event.target.elements.step.value);
   let amount = event.target.elements.amount.value;
 
+  
   setInterval(() => {
 
     position += 1;
