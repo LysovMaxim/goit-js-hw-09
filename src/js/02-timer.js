@@ -8,7 +8,7 @@ console.log(startEl);
 
 flatpickr(
   datetimeEl,
-   options = {
+   {
     enableTime: true,
     time_24hr: true,
     defaultDate: new Date(),
