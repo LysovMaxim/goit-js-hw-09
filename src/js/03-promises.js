@@ -21,9 +21,12 @@ formEl.addEventListener("submit", (event) => {
   let step = Number(event.target.elements.step.value);
   let amount = event.target.elements.amount.value;
 
-  for (let i = 0; i <= amount; i += 1) {
-    position += 1;
-    delay += step;
+  
+  setTimeout(() => {
+    for (let i = 0; i < amount; i += 1) {
+      position += 1;
+      
+   
 
    createPromise(position, delay)
     .then(({ position, delay }) => {
@@ -32,7 +35,9 @@ formEl.addEventListener("submit", (event) => {
     .catch(({ position, delay }) => {
       console.log(`❌ Rejected promise ${position} in ${delay}ms`);
     }) 
+       delay += step;
 }
+  },delay) 
   }
 ) 
 
