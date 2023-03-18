@@ -1,3 +1,5 @@
+import Notiflix from 'notiflix';
+
 function createPromise(position, delay) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {const shouldResolve = Math.random() > 0.3;
@@ -9,7 +11,6 @@ function createPromise(position, delay) {
       
     }, delay)
     })
-  
 };
 const formEl = document.querySelector('form');
 console.log(formEl);
@@ -30,10 +31,14 @@ formEl.addEventListener("submit", (event) => {
       
       createPromise(position, delay)
         .then(({ position, delay }) => {
-          console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
+          Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`,{
+    timeout: 8000,
+  });
         })
         .catch(({ position, delay }) => {
-          console.log(`❌ Rejected promise ${position} in ${delay}ms`);
+          Notiflix.Notify.warning(`❌ Rejected promise ${position} in ${delay}ms`,{
+    timeout: 8000,
+  });
         })
       delay += step;
     }
