@@ -17,9 +17,7 @@ console.log(secondsEl);
 startEl.disabled = true;
 let selectDate = null;
 
-flatpickr(
-  datetimeEl,
-  (options = {
+ const options = {
     isActiv: false,
     interval: null,
     
@@ -62,7 +60,11 @@ flatpickr(
         secondsEl.textContent = components.seconds;
       }, 1000);
     },
-  }));
+  }
+
+flatpickr(
+  datetimeEl,options
+);
 
 
 startEl.addEventListener('click', () => {
