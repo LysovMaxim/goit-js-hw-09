@@ -19,7 +19,7 @@ let selectDate = null;
 
 flatpickr(
   datetimeEl,
-  options = {
+  (options = {
     isActiv: false,
     interval: null,
     
@@ -51,7 +51,7 @@ flatpickr(
         defference = selectDate - new Date();
         if (defference < 0) {
           return clearInterval(this.interval);
-}
+        }
         this.isActiv = true;
 
         const components = convertMs(defference);
@@ -60,9 +60,9 @@ flatpickr(
         hoursEl.textContent = components.hours;
         minutesEl.textContent = components.minutes;
         secondsEl.textContent = components.seconds;
-      }, 1000);   
-    }, 
-  })
+      }, 1000);
+    },
+  }));
 
 
 startEl.addEventListener('click', () => {
