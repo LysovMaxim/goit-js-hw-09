@@ -19,7 +19,7 @@ let selectDate = null;
 
 flatpickr(
   datetimeEl,
-  (options = {
+  options = {
     isActiv: false,
     interval: null,
     
@@ -63,7 +63,7 @@ flatpickr(
       }, 1000);   
     }, 
   })
-);
+
 
 startEl.addEventListener('click', () => {
   options.start();
