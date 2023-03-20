@@ -1,5 +1,6 @@
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
+import Notiflix from 'notiflix';
 
 const datetimeEl = document.querySelector('#datetime-picker');
 console.log(datetimeEl);
@@ -15,57 +16,54 @@ const secondsEl = document.querySelector('span[data-seconds]');
 console.log(secondsEl);
 
 startEl.disabled = true;
-let selectDate = null;
 
- const options = {
-    isActiv: false,
-    interval: null,
-    
+const options = {
+  isActiv: false,
+  interval: null,
+  selectDate: null,
+  defference: 0,
 
-    enableTime: true,
-    time_24hr: true,
-    defaultDate: new Date(),
-    minuteIncrement: 1,
-    onClose(selectedDates) {
-      if (selectedDates[0] <= new Date()) {
-        window.alert('Please choose a date in the future');
-        startEl.disabled = true;
-        selectDate = null;
-      } else {
-        startEl.disabled = false;
-        selectDate = selectedDates[0];
-        console.log(selectDate);
-        return;
+  enableTime: true,
+  time_24hr: true,
+  defaultDate: Date.now(),
+  minuteIncrement: 1,
+  onClose([selectedDates]) {
+    if (selectedDates <= Date.now()) {
+      Notiflix.Report.info('Please choose a date in the future');
+      startEl.disabled = true;
+      options.selectDate = null;
+    } else {
+      startEl.disabled = false;
+      options.selectDate = selectedDates;
+      return;
+    }
+  },
+  start() {
+    if (this.isActiv) {
+      return;
+    }
+
+    this.interval = setInterval(() => {
+      options.defference = options.selectDate - Date.now();
+      if (options.defference < 0) {
+        return clearInterval(this.interval);
       }
-    },
- 
-    start() {
-      if (this.isActiv) {
-        return;
-      }
-      let defference = 0;
+      this.isActiv = true;
 
-      this.interval = setInterval(() => {
-        defference = selectDate - new Date();
-        if (defference < 0) {
-          return clearInterval(this.interval);
-        }
-        this.isActiv = true;
+      options.addDom();
+    }, 1000);
+  },
+  addDom() {
+    const components = convertMs(options.defference);
+    console.log(components);
+    daysEl.textContent = pad(components.days);
+    hoursEl.textContent = pad(components.hours);
+    minutesEl.textContent = pad(components.minutes);
+    secondsEl.textContent = pad(components.seconds);
+  },
+};
 
-        const components = convertMs(defference);
-        console.log(components);
-        daysEl.textContent = components.days;
-        hoursEl.textContent = components.hours;
-        minutesEl.textContent = components.minutes;
-        secondsEl.textContent = components.seconds;
-      }, 1000);
-    },
-  }
-
-flatpickr(
-  datetimeEl,options
-);
-
+flatpickr(datetimeEl, options);
 
 startEl.addEventListener('click', () => {
   options.start();
@@ -81,10 +79,10 @@ function convertMs(ms) {
   const hour = minute * 60;
   const day = hour * 24;
 
-  const days = pad(Math.floor(ms / day));
-  const hours = pad(Math.floor((ms % day) / hour));
-  const minutes = pad(Math.floor(((ms % day) % hour) / minute));
-  const seconds = pad(Math.floor((((ms % day) % hour) % minute) / second));
+  const days = Math.floor(ms / day);
+  const hours = Math.floor((ms % day) / hour);
+  const minutes = Math.floor(((ms % day) % hour) / minute);
+  const seconds = Math.floor((((ms % day) % hour) % minute) / second);
 
   return { days, hours, minutes, seconds };
 }
