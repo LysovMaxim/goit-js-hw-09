@@ -22,13 +22,20 @@ img {
     font-size: 48px;
 }
 
+.field{
+ margin-left: 30px;
+}
+
 .label{
-  display: block;
-  font-size: 20px;
+  display: flex;
+  font-size: 15px;
+  justify-content: center;
 }
 
 .value {
-  margin-right: 30px;
+  display: flex;
+  justify-content: center;
+  
 
 }
 
