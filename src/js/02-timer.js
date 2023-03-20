@@ -3,17 +3,11 @@ import 'flatpickr/dist/flatpickr.min.css';
 import Notiflix from 'notiflix';
 
 const datetimeEl = document.querySelector('#datetime-picker');
-console.log(datetimeEl);
 const startEl = document.querySelector('button[data-start]');
-console.log(startEl);
 const daysEl = document.querySelector('span[data-days]');
-console.log(daysEl);
 const hoursEl = document.querySelector('span[data-hours]');
-console.log(hoursEl);
 const minutesEl = document.querySelector('span[data-minutes]');
-console.log(minutesEl);
 const secondsEl = document.querySelector('span[data-seconds]');
-console.log(secondsEl);
 
 startEl.disabled = true;
 
@@ -55,7 +49,6 @@ const options = {
   },
   addDom() {
     const components = convertMs(options.defference);
-    console.log(components);
     daysEl.textContent = pad(components.days);
     hoursEl.textContent = pad(components.hours);
     minutesEl.textContent = pad(components.minutes);
