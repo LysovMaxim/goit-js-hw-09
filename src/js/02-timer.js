@@ -38,13 +38,13 @@ const options = {
     }
 
     this.interval = setInterval(() => {
-      options.defference = options.selectDate - Date.now();
-      if (options.defference < 0) {
+      this.defference = this.selectDate - Date.now();
+      if (this.defference < 0) {
         return clearInterval(this.interval);
       }
       this.isActiv = true;
 
-      options.addDom();
+      this.addDom();
     }, 1000);
   },
   addDom() {
